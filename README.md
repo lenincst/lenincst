@@ -31,11 +31,13 @@
 
 ###
 
-<p align="left">- 🎓 Graduated in Systems Analysis and Development  <br>- 📌 Living in Florianópolis, Santa Catarina, Brazil  <br>- 💼 Founder and CEO of PlanIa  <br>- 🏆 Certified Developer - Cisco, AWS  <br>- 📚 Learning more about Mobile Development</p>
+<div align="center">
+  <img height="200" src="\foto.png"  />
+</div>
 
 ###
 
-![Snake animation](https://github.com/lenincst/lenincst/blob/output/github-contribution-grid-snake.svg)
+<p align="left">- 🎓 Graduated in Systems Analysis and Development  <br>- 📌 Living in Florianópolis, Santa Catarina, Brazil  <br>- 💼 Founder and CEO of PlanIa  <br>- 🏆 Certified Developer - Cisco, AWS  <br>- 📚 Learning more about Mobile Development</p>
 
 ###
 
