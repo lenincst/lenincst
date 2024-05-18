@@ -9,11 +9,11 @@
 
 ###
 
-<p align="left">💻Testing Tools:</p>
+<p align="center">💻Testing Tools:</p>
 
 ###
 
-<div align="left">
+<div align="center">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" height="40" alt="selenium logo"  />
   <img width="35" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" height="40" alt="php logo"  />
@@ -37,7 +37,7 @@
 
 ###
 
-<p align="left">- 🎓 Graduated in Systems Analysis and Development  <br>- 📌 Living in Florianópolis, Santa Catarina, Brazil  <br>- 💼 Founder and CEO of PlanIa  <br>- 🏆 Certified Developer - Cisco, AWS  <br>- 📚 Learning more about Mobile Development</p>
+<p align="center">- 🎓 Graduated in Systems Analysis and Development  <br>- 📌 Living in Florianópolis, Santa Catarina, Brazil  <br>- 💼 Founder and CEO of PlanIa  <br>- 🏆 Certified Developer - Cisco, AWS  <br>- 📚 Learning more about Mobile Development</p>
 
 ###
 
