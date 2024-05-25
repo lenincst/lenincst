@@ -37,7 +37,7 @@
 
 ###
 
-<p align="center">- 🎓 Graduated in Systems Analysis and Development  <br>- 📌 Living in Florianópolis, Santa Catarina, Brazil  <br>- 💼 Founder and CEO of PlanIa  <br>- 🏆 Certified Developer - Cisco, AWS  <br>- 📚 Learning more about Mobile Development</p>
+<p align="center"> • Developer with 2 years of experience in Python and PHP, specializing in MySQL and MariaDB. I've been involved in personal projects using Java and C++, and I'm eager to delve into mobile development. My expertise lies in building robust backend solutions, with a focus on scalable and efficient architectures.<br><br> • 🎓 Graduated in Systems Analysis and Development  <br>• 📌 Living in Florianópolis, Santa Catarina, Brazil  <br>• 🏆 Certified Developer - Cisco, AWS  <br>• 📚 Learning more about Mobile Development</p>
 
 ###
 
