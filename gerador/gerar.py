@@ -1,0 +1,45 @@
+"""Gera as imagens do perfil.
+
+Uso: python3 gerador/gerar.py <pasta-de-saida> [--dados arquivo.json]
+Sem --dados, coleta na API do GitHub com o token em GH_TOKEN.
+"""
+import json
+import os
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+import cenas  # noqa: E402
+import dados as coleta  # noqa: E402
+
+
+def main():
+    saida = Path(sys.argv[1])
+    saida.mkdir(parents=True, exist_ok=True)
+    if "--dados" in sys.argv:
+        dados = json.loads(Path(sys.argv[sys.argv.index("--dados") + 1]).read_text())
+    else:
+        dados = coleta.coletar(os.environ["GH_TOKEN"])
+    perfil = json.loads((Path(__file__).parent.parent / "perfil.json").read_text())
+
+    arquivos = {
+        "abertura.svg": cenas.abertura(dados, perfil),
+        "sistema.svg": cenas.sistema(dados, perfil),
+        "terminal.svg": cenas.terminal(dados, perfil),
+        "computador.svg": cenas.computador(dados, perfil),
+        "tarefas.svg": cenas.tarefas(dados, perfil),
+        "fim.svg": cenas.fim(),
+        "botao-linkedin.svg": cenas.botao("LinkedIn", cenas.ICONE_LINKEDIN),
+        "botao-site.svg": cenas.botao("lecodaro.com", cenas.ICONE_SITE),
+    }
+    for marca in perfil["marcas"]:
+        arquivos[f"atalho-{marca['id']}.svg"] = cenas.atalho(marca)
+    for nome, svg in arquivos.items():
+        (saida / nome).write_text(svg)
+    (saida / "dados.json").write_text(json.dumps(
+        {k: v for k, v in dados.items() if k != "semanas"}, ensure_ascii=False, indent=1))
+    print(f"{len(arquivos)} imagens em {saida}")
+
+
+if __name__ == "__main__":
+    main()
