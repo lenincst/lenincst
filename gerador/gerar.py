@@ -9,8 +9,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-import cenas  # noqa: E402
 import dados as coleta  # noqa: E402
+import pecas  # noqa: E402
 
 
 def main():
@@ -22,18 +22,9 @@ def main():
         dados = coleta.coletar(os.environ["GH_TOKEN"])
     perfil = json.loads((Path(__file__).parent.parent / "perfil.json").read_text())
 
-    arquivos = {
-        "abertura.svg": cenas.abertura(dados, perfil),
-        "sistema.svg": cenas.sistema(dados, perfil),
-        "terminal.svg": cenas.terminal(dados, perfil),
-        "computador.svg": cenas.computador(dados, perfil),
-        "tarefas.svg": cenas.tarefas(dados, perfil),
-        "fim.svg": cenas.fim(),
-        "botao-linkedin.svg": cenas.botao("LinkedIn", cenas.ICONE_LINKEDIN),
-        "botao-site.svg": cenas.botao("lecodaro.com", cenas.ICONE_SITE),
-    }
-    for marca in perfil["marcas"]:
-        arquivos[f"atalho-{marca['id']}.svg"] = cenas.atalho(marca)
+    arquivos = {"banner.svg": pecas.banner(dados, perfil), "linguagens.svg": pecas.linguagens(dados, perfil)}
+    for i, marca in enumerate(perfil["marcas"]):
+        arquivos[f"marca-{marca['id']}.svg"] = pecas.cartao_marca(marca, i)
     for nome, svg in arquivos.items():
         (saida / nome).write_text(svg)
     (saida / "dados.json").write_text(json.dumps(

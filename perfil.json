@@ -1,233 +1,92 @@
 {
   "nome": "Lenin Costa da Rosa",
-  "cargo": "Fundador & CEO",
+  "subtitulo": "Programador e fundador",
   "empresa": "LECODARO LTDA",
-  "funcao": "Desenvolvedor de Software Sênior",
-  "cidade": "Florianópolis/SC",
-  "pais": "Brasil",
-  "anos_programando": "6+",
   "linkedin": "https://www.linkedin.com/in/lenincst/",
+  "site": "https://lecodaro.com",
   "marcas": [
     {
-      "id": "holding",
-      "nome": "Lecodaro",
-      "rotulo": [
-        "Lecodaro",
-        "LTDA"
-      ],
-      "dominio": "lecodaro.com",
-      "descricao": "a holding das marcas",
-      "situacao": "ONLINE",
-      "curta": "a holding das marcas"
+      "id": "studio",
+      "nome": "Lecodaro Studio",
+      "descricao": "Software sob medida",
+      "dominio": "lecodaro.studio",
+      "situacao": "no ar",
+      "cor": "#f26a3d",
+      "recorte": "12 12 48 48"
     },
     {
       "id": "cloud",
       "nome": "Lecodaro Cloud",
-      "rotulo": [
-        "Lecodaro",
-        "Cloud"
-      ],
+      "descricao": "Arquivos e produtos na nuvem",
       "dominio": "lecodaro.cloud",
-      "descricao": "SaaS de arquivos e produtos",
-      "situacao": "ONLINE",
-      "curta": "SaaS de arquivos"
-    },
-    {
-      "id": "studio",
-      "nome": "Lecodaro Studio",
-      "rotulo": [
-        "Lecodaro",
-        "Studio"
-      ],
-      "dominio": "lecodaro.studio",
-      "descricao": "software sob medida",
-      "situacao": "ONLINE",
-      "curta": "software sob medida"
-    },
-    {
-      "id": "club",
-      "nome": "Lecodaro Club",
-      "rotulo": [
-        "Lecodaro",
-        "Club"
-      ],
-      "dominio": "lecodaro.club",
-      "descricao": "rede de parceiros",
-      "situacao": "EM BREVE",
-      "curta": "rede de parceiros"
+      "situacao": "no ar",
+      "cor": "#22c55e"
     },
     {
       "id": "info",
       "nome": "Lecodaro Info",
-      "rotulo": [
-        "Lecodaro",
-        "Info"
-      ],
+      "descricao": "O jornal da Lecodaro",
       "dominio": "lecodaro.info",
-      "descricao": "jornal da Lecodaro",
-      "situacao": "EM BREVE",
-      "curta": "jornal da Lecodaro"
+      "situacao": "em breve",
+      "cor": "#3b82f6"
     }
   ],
-  "stack_carreira": [
+  "codigo": [
     {
-      "nome": "Java",
-      "sigla": "JV",
-      "cor": "#b07219"
+      "nome": "PHP",
+      "linguagem": "PHP",
+      "icone": "php"
     },
     {
-      "nome": "Spring Boot",
-      "sigla": "SP",
-      "cor": "#6db33f"
+      "nome": "Python",
+      "linguagem": "Python",
+      "icone": "python"
+    },
+    {
+      "nome": "Laravel",
+      "linguagem": "Blade",
+      "icone": "laravel"
+    },
+    {
+      "nome": "Bash",
+      "linguagem": "Shell",
+      "icone": "gnubash"
+    },
+    {
+      "nome": "JavaScript",
+      "linguagem": "JavaScript",
+      "icone": "javascript"
+    },
+    {
+      "nome": "TypeScript",
+      "linguagem": "TypeScript",
+      "icone": "typescript"
+    }
+  ],
+  "carreira": [
+    {
+      "nome": "Java",
+      "icone": "openjdk"
+    },
+    {
+      "nome": "Spring",
+      "icone": "springboot"
     },
     {
       "nome": "React",
-      "sigla": "RE",
-      "cor": "#61dafb"
+      "icone": "react"
     },
     {
       "nome": "MySQL",
-      "sigla": "MY",
-      "cor": "#4479a1"
+      "icone": "mysql"
     },
     {
       "nome": "MongoDB",
-      "sigla": "MG",
-      "cor": "#47a248"
+      "icone": "mongodb"
     },
     {
       "nome": "AWS",
-      "sigla": "AW",
       "cor": "#ff9900"
     }
-  ],
-  "linguagens_codigo": {
-    "PHP": {
-      "sigla": "PH",
-      "cor": "#4f5d95"
-    },
-    "Python": {
-      "sigla": "PY",
-      "cor": "#3572a5"
-    },
-    "Blade": {
-      "sigla": "BL",
-      "cor": "#f7523f"
-    },
-    "Shell": {
-      "sigla": "SH",
-      "cor": "#89e051"
-    },
-    "JavaScript": {
-      "sigla": "JS",
-      "cor": "#f1e05a"
-    },
-    "TypeScript": {
-      "sigla": "TS",
-      "cor": "#3178c6"
-    },
-    "HTML": {
-      "sigla": "HT",
-      "cor": "#e34c26"
-    },
-    "CSS": {
-      "sigla": "CS",
-      "cor": "#563d7c"
-    }
-  },
-  "especialidade": "Marketing, Growth e MarTech",
-  "operacoes": [
-    {
-      "nome": "Imob. e construção (SC/SP)",
-      "valor": 840,
-      "rotulo": "R$ 840 mi de faturamento/ano"
-    },
-    {
-      "nome": "Indústria",
-      "valor": 520,
-      "rotulo": "R$ 520 mi de faturamento/ano"
-    },
-    {
-      "nome": "Varejo, moda e software",
-      "valor": 400,
-      "rotulo": "mais de R$ 400 mi em receita"
-    }
-  ],
-  "ferramentas": [
-    {
-      "nome": "RD Station",
-      "sigla": "RD",
-      "cor": "#19c1ce"
-    },
-    {
-      "nome": "HubSpot",
-      "sigla": "HS",
-      "cor": "#ff7a59"
-    },
-    {
-      "nome": "Google Ads",
-      "sigla": "AD",
-      "cor": "#4285f4"
-    },
-    {
-      "nome": "Meta Ads",
-      "sigla": "MA",
-      "cor": "#0866ff"
-    },
-    {
-      "nome": "GA4",
-      "sigla": "G4",
-      "cor": "#e37400"
-    },
-    {
-      "nome": "Tag Manager",
-      "sigla": "TM",
-      "cor": "#246fdb"
-    },
-    {
-      "nome": "Power BI",
-      "sigla": "BI",
-      "cor": "#f2c811"
-    },
-    {
-      "nome": "Tableau",
-      "sigla": "TB",
-      "cor": "#e97627"
-    },
-    {
-      "nome": "Jira",
-      "sigla": "JI",
-      "cor": "#2684ff"
-    },
-    {
-      "nome": "Azure DevOps",
-      "sigla": "AZ",
-      "cor": "#0078d7"
-    },
-    {
-      "nome": "Amplitude",
-      "sigla": "AM",
-      "cor": "#1e61f0"
-    },
-    {
-      "nome": "Mixpanel",
-      "sigla": "MX",
-      "cor": "#7856ff"
-    },
-    {
-      "nome": "GitHub",
-      "sigla": "GH",
-      "cor": "#24292f"
-    },
-    {
-      "nome": "GitLab",
-      "sigla": "GL",
-      "cor": "#fc6d26"
-    }
-  ],
-  "faz": [
-    "APIs, webhooks, integrações e automações;",
-    "gestão de leads e páginas de conversão;",
-    "rastreamento, dashboards e dados."
   ]
 }
