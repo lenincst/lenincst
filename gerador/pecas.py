@@ -17,6 +17,22 @@ ICONES = json.loads((AQUI / "icones.json").read_text())["icones"]
 FUNDO = "#07080a"
 TITULO, TEXTO, TEXTO_2, ROTULO, DOMINIO = "#f7f7f9", "#b6bbc4", "#a4a9b3", "#6b7280", "#7f8590"
 
+# O lema da Lecodaro: uma palavra para cada marca, na cor dela (Cloud, Studio, Info).
+FRASE = [[("Todo dado precisa de ", TEXTO_2), ("ordem", "#5ee08f"), (",", TEXTO_2)],
+         [("toda ideia precisa de ", TEXTO_2), ("forma", "#ff9a6e"), (",", TEXTO_2)],
+         [("toda descoberta precisa de ", TEXTO_2), ("voz", "#8cb6ff")]]
+
+
+def _linha_colorida(partes, fonte, tamanho, cx, y, tracking=0.0):
+    """Uma linha de texto com trechos de cores diferentes, centralizada em `cx`."""
+    total = sum(largura(t, fonte, tamanho, tracking) for t, _ in partes)
+    x, saida = cx - total / 2, []
+    for t, cor in partes:
+        saida.append(texto(t, fonte, tamanho, x, y, cor=cor, tracking=tracking))
+        x += largura(t, fonte, tamanho, tracking)
+    return "".join(saida)
+
+
 # Cores de cada marca, como no branding.
 MARCAS = {
     "studio": {"letras": "SO", "x": 10.5, "borda": "#f9804f", "letra": "#ff9e74", "tinta": "251,138,92",
@@ -131,8 +147,8 @@ def banner(dados, perfil):
     r_esfera = tamanho * 8 / 92
     cx_esfera = x_nome + largura_nome + tamanho * 7 / 92 + r_esfera
     cy_esfera = base - r_esfera
-    base_sub = base + 74
-    topo_pontos = base_sub + 66
+    bases_frase = [base + 70 + i * 40 for i in range(len(FRASE))]
+    topo_pontos = bases_frase[-1] + 62
     passo = 1060 / 52
     base_legenda = topo_pontos + 6 * 19 + 46
     A = round(base_legenda + 36)
@@ -170,7 +186,8 @@ def banner(dados, perfil):
     partes = ['<g clip-path="url(#bc)">', fundo, *luzes, vidro]
     partes.append(texto(nome, "wordmark", tamanho, x_nome, base, cor=TITULO, tracking=tracking, classe="letra", por_letra=True))
     partes.append(f'<g class="esf">{c_esfera}</g>')
-    partes.append(f'<g class="sub">{texto(perfil["subtitulo"], "display", 34, L / 2, base_sub, cor=TEXTO_2, ancora="meio", tracking=-0.01)}</g>')
+    frase = "".join(_linha_colorida(linha, "display", 27, L / 2, y, -0.01) for linha, y in zip(FRASE, bases_frase))
+    partes.append(f'<g class="sub">{frase}</g>')
 
     # cada ponto é um dia do último ano; o brilho é o nível de contribuição daquele dia
     niveis = {"NONE": .07, "FIRST_QUARTILE": .28, "SECOND_QUARTILE": .5, "THIRD_QUARTILE": .75, "FOURTH_QUARTILE": .95}
@@ -196,27 +213,20 @@ def banner(dados, perfil):
     partes.append(f'<g class="leg">{texto(esquerda.upper(), "mono_medio", 14, x0, base_legenda, cor=ROTULO, tracking=0.16)}'
                   f'{texto(direita.upper(), "mono_medio", 14, L - x0, base_legenda, cor=ROTULO, ancora="fim", tracking=0.16)}</g>')
     partes.append("</g>")
-    return documento(L, A, f"Lecodaro: {perfil['subtitulo']}. Cada ponto é um dia de contribuição no GitHub no último ano.",
+    return documento(L, A, "Lecodaro. Todo dado precisa de ordem, toda ideia precisa de forma, toda descoberta precisa de voz. "
+                     "Cada ponto é um dia de contribuição no GitHub no último ano.",
                      css, "".join(partes), "".join(defs))
 
 
 # --------------------------------------------------------------------------- marcas
 
-def cabecalho_marcas():
-    L, A = 1200, 72
-    defs_vidro, fundo, vidro = _vidro("h", L, A, 22)
-    frase = [("Todo dado precisa de ", TEXTO_2), ("ordem", "#5ee08f"), (", toda ideia precisa de ", TEXTO_2),
-             ("forma", "#ff9a6e"), (", toda descoberta precisa de ", TEXTO_2), ("voz", "#8cb6ff")]
-    total = sum(largura(t, "display", 17) for t, _ in frase)
-    x = L - 36 - total
+def cabecalho_marcas(perfil):
+    L, A = 1200, 128
+    defs_vidro, fundo, vidro = _vidro("h", L, A, 26)
     partes = ['<g clip-path="url(#hc)">', fundo, vidro,
-              texto("CONHEÇA AS MARCAS DA LECODARO", "mono_medio", 14, 36, 41, cor=ROTULO, tracking=0.22)]
-    for t, cor in frase:
-        partes.append(texto(t, "display", 17, x, 42, cor=cor))
-        x += largura(t, "display", 17)
-    partes.append("</g>")
-    return documento(L, A, "Conheça as marcas da Lecodaro. Todo dado precisa de ordem, toda ideia precisa de forma, "
-                     "toda descoberta precisa de voz.", CSS_BASE, "".join(partes), defs_vidro)
+              texto(perfil["titulo"], "wordmark", 40, L / 2, 66, cor="#f4f4f6", ancora="meio", tracking=-0.03),
+              texto(perfil["subtitulo"], "display", 21, L / 2, 100, cor=TEXTO_2, ancora="meio", tracking=-0.01), "</g>"]
+    return documento(L, A, f"{perfil['titulo']}. {perfil['subtitulo']}.", CSS_BASE, "".join(partes), defs_vidro)
 
 
 def cartao_marca(marca, indice):
@@ -264,7 +274,7 @@ def linguagens(dados, perfil):
 .cab{animation:surgir 1s ease-out both}"""
     x_div = margem + len(medidas) * largura_item + divisao / 2
     partes = ['<g clip-path="url(#gc)">', fundo, vidro,
-              f'<g class="cab">{texto("NO CÓDIGO DA LECODARO", "mono_medio", 13, margem + 12, 60, cor=ROTULO, tracking=0.22)}'
+              f'<g class="cab">{texto(perfil["rotulo_linguagens"], "mono_medio", 13, margem + 12, 60, cor=ROTULO, tracking=0.22)}'
               f'{texto("TAMBÉM NA CARREIRA", "mono_medio", 13, x_div + divisao / 2 + 12, 60, cor=ROTULO, tracking=0.22)}</g>',
               f'<rect x="{x_div:.1f}" y="44" width="1" height="{A - 88}" fill="#fff" fill-opacity=".1"/>']
     for n, (item, parte) in enumerate(itens):
@@ -287,7 +297,7 @@ def linguagens(dados, perfil):
         bloco.append("</g>")
         partes.append("".join(bloco))
     partes.append("</g>")
-    return documento(L, A, "Linguagens que o Lenin mais programa no código da Lecodaro e as que usa na carreira",
+    return documento(L, A, "Linguagens que o Lenin mais usa e as que também usa na carreira",
                      css, "".join(partes), defs)
 
 

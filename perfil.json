@@ -1,7 +1,9 @@
 {
   "nome": "Lenin Costa da Rosa",
-  "subtitulo": "Programador e fundador",
   "empresa": "LECODARO LTDA",
+  "titulo": "Programador e fundador",
+  "subtitulo": "Conheça as marcas",
+  "rotulo_linguagens": "LINGUAGENS QUE MAIS USO",
   "linkedin": "https://www.linkedin.com/in/lenincst/",
   "site": "https://lecodaro.com",
   "marcas": [

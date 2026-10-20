@@ -2,18 +2,17 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/lenincst/lenincst/output/banner.svg" width="100%"
-       alt="Lecodaro — Programador e fundador. Cada ponto é um dia de contribuição no último ano.">
+       alt="Lecodaro. Todo dado precisa de ordem, toda ideia precisa de forma, toda descoberta precisa de voz. Cada ponto é um dia de contribuição no último ano.">
 </p>
 
 <p align="center">
-  Programador há mais de 6 anos e fundador da <b>Lecodaro</b>, a holding das marcas abaixo.<br>
-  Desenvolvo plataformas, APIs, integrações e automações para Marketing, Growth e MarTech,<br>
-  com software em operações de até R$ 840 milhões de faturamento anual.
+  Fundador da <b>Lecodaro</b> e programador há mais de 8 anos. Construo a tecnologia por trás de Marketing, Growth e MarTech:
+  plataformas, APIs, integrações e automações que hoje sustentam operações de até R$ 840 milhões em faturamento anual.
 </p>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/lenincst/lenincst/output/marcas.svg" width="100%"
-       alt="Conheça as marcas da Lecodaro. Todo dado precisa de ordem, toda ideia precisa de forma, toda descoberta precisa de voz.">
+       alt="Programador e fundador. Conheça as marcas.">
 </p>
 
 <p align="center">
@@ -24,7 +23,7 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/lenincst/lenincst/output/linguagens.svg" width="100%"
-       alt="Linguagens que mais programo no código da Lecodaro e as que uso na carreira">
+       alt="Linguagens que mais uso e as que também uso na carreira">
 </p>
 
 <p align="center">
