@@ -7,28 +7,21 @@
   "marcas": [
     {
       "id": "studio",
-      "nome": "Lecodaro Studio",
-      "descricao": "Software sob medida",
+      "sufixo": "studio",
       "dominio": "lecodaro.studio",
-      "situacao": "no ar",
-      "cor": "#f26a3d",
-      "recorte": "12 12 48 48"
+      "descricao": "Software house. Software sob medida, do protótipo ao deploy."
     },
     {
       "id": "cloud",
-      "nome": "Lecodaro Cloud",
-      "descricao": "Arquivos e produtos na nuvem",
+      "sufixo": "cloud",
       "dominio": "lecodaro.cloud",
-      "situacao": "no ar",
-      "cor": "#22c55e"
+      "descricao": "PIM na nuvem. Seus produtos e arquivos, sempre organizados."
     },
     {
       "id": "info",
-      "nome": "Lecodaro Info",
-      "descricao": "O jornal da Lecodaro",
+      "sufixo": "info",
       "dominio": "lecodaro.info",
-      "situacao": "em breve",
-      "cor": "#3b82f6"
+      "descricao": "O jornal da Lecodaro. Tecnologia do Brasil e do mundo, em qualquer tela."
     }
   ],
   "codigo": [

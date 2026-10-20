@@ -22,7 +22,9 @@ def main():
         dados = coleta.coletar(os.environ["GH_TOKEN"])
     perfil = json.loads((Path(__file__).parent.parent / "perfil.json").read_text())
 
-    arquivos = {"banner.svg": pecas.banner(dados, perfil), "linguagens.svg": pecas.linguagens(dados, perfil)}
+    arquivos = {"banner.svg": pecas.banner(dados, perfil), "marcas.svg": pecas.cabecalho_marcas(),
+                "linguagens.svg": pecas.linguagens(dados, perfil),
+                "botao-linkedin.svg": pecas.botao("linkedin"), "botao-lecodaro.svg": pecas.botao("lecodaro")}
     for i, marca in enumerate(perfil["marcas"]):
         arquivos[f"marca-{marca['id']}.svg"] = pecas.cartao_marca(marca, i)
     for nome, svg in arquivos.items():
