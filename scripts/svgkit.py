@@ -37,7 +37,10 @@ FAMILIA = "LCR Mono"
 RESERVA = "ui-monospace,SFMono-Regular,Menlo,Consolas,monospace"
 AVANCO = 0.6  # IBM Plex Mono: todo glifo avança 600/1000 em (conferido em _subset)
 
-TEMAS = ("dark", "light")
+# Um tema só: escuro com fundo opaco próprio. O <picture> do GitHub escolhe a imagem pela preferência do
+# sistema operacional, não pelo tema do GitHub; com GitHub escuro e sistema claro (ou o contrário) a versão
+# errada aparecia. Com fundo próprio a peça fica legível em qualquer combinação.
+TEMAS = ("dark",)
 
 
 def fmt(v: float, casas: int = 2) -> str:
@@ -156,7 +159,9 @@ class Doc:
         return (f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 {fmt(self.w)} {fmt(self.h)}" '
                 f'width="{fmt(self.w)}" height="{fmt(self.h)}" role="img" aria-labelledby="t d" fill="none">'
                 f'<title id="t">{escape(self.titulo)}</title><desc id="d">{escape(self.descricao)}</desc>'
-                f'<style>{estilo}</style><defs>{"".join(self.defs)}</defs>{"".join(self.corpo)}</svg>\n')
+                f'<style>{estilo}</style><defs>{"".join(self.defs)}</defs>'
+                f'<rect width="{fmt(self.w)}" height="{fmt(self.h)}" rx="12" fill="{self.c["fundo"]}"/>'
+                f'{"".join(self.corpo)}</svg>\n')
 
 
 def _mistura(rgb: tuple[int, int, int], k: float) -> tuple[int, int, int]:

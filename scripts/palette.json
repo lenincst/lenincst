@@ -1,5 +1,5 @@
 {
- "_comentario": "Paleta dos SVGs. dark: âmbar de fósforo sobre o fundo do GitHub, com traços realçados (realce < 1 aproxima opacidades de 1); light: tinta grafite sobre papel.",
+ "_comentario": "Paleta dos SVGs: um tema escuro com fundo opaco próprio (legível com GitHub claro ou escuro). realce < 1 aproxima de 1 as opacidades dos traços estruturais.",
  "dark": {
   "fundo": "#0d1117",
   "tinta": "#f0f6fc",
@@ -18,24 +18,5 @@
   ],
   "trilho": ".22",
   "painel": ".07"
- },
- "light": {
-  "fundo": "#ffffff",
-  "tinta": "#1f2328",
-  "suave": "#59636e",
-  "fraco": "#818b98",
-  "traco": "#1f2328",
-  "grade": "#1f2328",
-  "grade_op": "0.06",
-  "ambar": "#9a5f00",
-  "ciano": "#1b6f80",
-  "realce": "1",
-  "rastro": ".22",
-  "luz": [
-   ".12",
-   ".32"
-  ],
-  "trilho": ".1",
-  "painel": "0"
  }
 }

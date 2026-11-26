@@ -5,7 +5,8 @@ Datas conferidas: tear de Jacquard (patente de 1804), Notas de Ada Lovelace com 
 Boole, "The Laws of Thought" (1854), Turing, "On Computable Numbers" (1936), ENIAC concluído e o
 "First Draft of a Report on the EDVAC" de von Neumann (1945), transistor na Bell Labs (dez/1947) e a
 mariposa no Harvard Mark II (9/set/1947, equipe de Grace Hopper), UNIX e Apollo 11 (1969), linguagem C (1972),
-WWW pública e Linux (1991), Git (abr/2005).
+WWW pública e Linux (1991), JavaScript (Brendan Eich, mai/1995) e PHP (Rasmus Lerdorf, jun/1995),
+Git (abr/2005).
 """
 import math
 
@@ -17,18 +18,19 @@ Y1, Y2, YC = 96, 276, 192  # trilhas das duas faixas e o canal de retorno
 MARCOS = [
     ("1804", "Jacquard", "tear de cartões", "jacquard"),
     ("1843", "Ada Lovelace", "Nota G", "nota"),
-    ("1854", "George Boole", "álgebra booleana", "porta"),
+    ("1854", "George Boole", "lógica booleana", "porta"),
     ("1936", "Alan Turing", "máquina universal", "fita"),
     ("1945", "ENIAC", "von Neumann", "valvula"),
     ("1947", "transistor", "Hopper · Mark II", "transistor"),
     ("1969", "UNIX · Apollo 11", "Margaret Hamilton", "lua"),
     ("1972", "linguagem C", "Dennis Ritchie", "chaves"),
-    ("1991", "WWW · Linux", "Berners-Lee · Torvalds", "globo"),
+    ("1991", "WWW · Linux", "Tim Berners-Lee", "globo"),
+    ("1995", "JavaScript · PHP", "Eich · Lerdorf", "codigo"),
     ("2005", "Git", "Linus Torvalds", "git"),
     ("agora", "você está aqui", "", "alvo"),
 ]
-X1 = [66 + i * 148 for i in range(6)]
-X2 = [100 + i * 175 for i in range(5)]
+X1 = [round(84 + i * 145.2, 1) for i in range(6)]
+X2 = list(X1)  # 6 em cima, 6 embaixo, nas mesmas colunas
 
 # Ícones de linha numa caixa 40×40 (traço 1,5). Um único path por ícone, desenhado de uma vez.
 ICONES = {
@@ -45,6 +47,7 @@ ICONES = {
     "lua": "M25 5A15 15 0 1 0 35 27A12 12 0 1 1 25 5ZM31 8.5L32 6.5L33 8.5L35 9.5L33 10.5L32 12.5L31 10.5L29 9.5Z",
     "chaves": "M15 5C10 5 10 8 10 12V16C10 18.5 9 20 6 20C9 20 10 21.5 10 24V28C10 32 10 35 15 35"
               "M25 5C30 5 30 8 30 12V16C30 18.5 31 20 34 20C31 20 30 21.5 30 24V28C30 32 30 35 25 35",
+    "codigo": "M14 11L5 20L14 29M26 11L35 20L26 29M23 7L17 33",
     "globo": "M34 20A14 14 0 1 1 6 20A14 14 0 1 1 34 20M6 20H34M20 6C14 12 14 28 20 34C26 28 26 12 20 6"
              "M8.5 12.5H31.5M8.5 27.5H31.5",
     "git": "M15 8A3 3 0 1 1 9 8A3 3 0 1 1 15 8M15 32A3 3 0 1 1 9 32A3 3 0 1 1 15 32M31 16A3 3 0 1 1 25 16"
@@ -75,9 +78,9 @@ def trilha() -> tuple[str, list[float], list[tuple[float, float]], float]:
 def construir(tema: str) -> str:
     doc = Doc(L, A, "Linha do tempo da computação",
               "Trilha de circuito impresso com marcos: 1804 tear de Jacquard; 1843 Ada Lovelace, Nota G; "
-              "1854 George Boole, álgebra booleana; 1936 Alan Turing, máquina universal; 1945 ENIAC e a "
+              "1854 George Boole, lógica booleana; 1936 Alan Turing, máquina universal; 1945 ENIAC e a "
               "arquitetura de von Neumann; 1947 transistor e a mariposa do Mark II, de Grace Hopper; 1969 UNIX "
-              "e Apollo 11, Margaret Hamilton; 1972 linguagem C, Dennis Ritchie; 1991 WWW e Linux; 2005 Git; "
+              "e Apollo 11, Margaret Hamilton; 1972 linguagem C, Dennis Ritchie; 1991 WWW e Linux; 1995 JavaScript e PHP; 2005 Git; "
               "e agora, você está aqui.", tema)
     c, css = doc.c, doc.css
     d, dist, nos, total = trilha()
