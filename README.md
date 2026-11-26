@@ -2,24 +2,6 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/boot.dark.svg">
-    <img src="assets/boot.light.svg" width="100%" alt="Engrenagens da máquina diferencial de Babbage giram, um cartão perfurado codifica LENIN em ASCII e a cena vira um terminal de CRT que digita: Lenin Costa da Rosa, Engenheiro de Software, Florianópolis, BR.">
-  </picture>
-</p>
-
-<p align="center">
-  <i>“The Analytical Engine weaves algebraical patterns just as the Jacquard-loom weaves flowers and leaves.”</i><br>
-  <sub>“A Máquina Analítica tece padrões algébricos assim como o tear de Jacquard tece flores e folhas.”<br>
-  — Ada Lovelace, Nota A, 1843</sub>
-</p>
-
-<p align="center">
-  Desenvolvedor de software sênior há mais de 8 anos, construindo plataformas, APIs, integrações e automações.<br>
-  <sub>ele/dele · Florianópolis, Santa Catarina</sub>
-</p>
-
-<p align="center">
-  <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/timeline.dark.svg">
     <img src="assets/timeline.light.svg" width="100%" alt="Linha do tempo em trilha de circuito: 1804 tear de Jacquard; 1843 Ada Lovelace, Nota G; 1854 George Boole, álgebra booleana; 1936 Alan Turing, máquina universal; 1945 ENIAC e von Neumann; 1947 transistor e o bug do Mark II, de Grace Hopper; 1969 UNIX e Apollo 11, Margaret Hamilton; 1972 linguagem C, Dennis Ritchie; 1991 WWW e Linux; 2005 Git; agora, você está aqui.">
   </picture>

@@ -13,12 +13,11 @@ from pathlib import Path
 AQUI = Path(__file__).resolve().parent
 sys.path.insert(0, str(AQUI))
 
-from pieces import boot, footer, fourier, life, stack, timeline, turing  # noqa: E402
+from pieces import footer, fourier, life, stack, timeline, turing  # noqa: E402
 from svgkit import TEMAS  # noqa: E402
 
 SAIDA = AQUI.parent / "assets"
 PECAS = {
-    "boot": boot.construir,
     "timeline": timeline.construir,
     "stack": stack.construir,
     "turing": turing.construir,

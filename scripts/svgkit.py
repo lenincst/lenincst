@@ -51,7 +51,7 @@ def largura(s: str, tamanho: float) -> float:
 
 
 def _subset(caminho: Path, chars: set[str]) -> bytes:
-    fonte = TTFont(caminho)
+    fonte = TTFont(caminho, recalcTimestamp=False)  # build reprodutível: mesma entrada, mesmos bytes
     cmap = fonte.getBestCmap()
     for ch in chars:
         if ord(ch) not in cmap:
