@@ -105,6 +105,24 @@ class Doc:
         self.corpo: list[str] = []
         self._chars = {k: set() for k in FONTES}
 
+    # ------------------------------------------------------------------ tema
+    def op(self, v: float) -> str:
+        """Opacidade de traço estrutural. No escuro, linhas finas somem contra #0d1117: aproxima de 1
+        mantendo a hierarquia (fator da paleta: 1 = sem mudança)."""
+        f = float(self.c.get("realce", 1))
+        return fmt(1 - (1 - v) * f, 3)
+
+    def cor_marca(self, cor: str) -> str:
+        """Cor oficial de um ícone; no escuro, clareia (mistura com branco) só o necessário para contraste 5:1 (ícones têm detalhes finos)."""
+        if self.tema != "dark":
+            return cor
+        r, g, b = (int(cor.lstrip("#")[i:i + 2], 16) for i in (0, 2, 4))
+        fundo = luminancia(self.c["fundo"])
+        k = 0.0
+        while k < 1 and (luminancia(_mistura((r, g, b), k)) + 0.05) / (fundo + 0.05) < 5:
+            k += 0.05
+        return "#%02x%02x%02x" % _mistura((r, g, b), k)
+
     # ------------------------------------------------------------------ texto
     def t(self, s: str, x: float, y: float, tam: float, cor: str, peso: str = "r", ancora: str = "start",
           cls: str = "", estilo: str = "", extra: str = "") -> str:
@@ -139,6 +157,18 @@ class Doc:
                 f'width="{fmt(self.w)}" height="{fmt(self.h)}" role="img" aria-labelledby="t d" fill="none">'
                 f'<title id="t">{escape(self.titulo)}</title><desc id="d">{escape(self.descricao)}</desc>'
                 f'<style>{estilo}</style><defs>{"".join(self.defs)}</defs>{"".join(self.corpo)}</svg>\n')
+
+
+def _mistura(rgb: tuple[int, int, int], k: float) -> tuple[int, int, int]:
+    return tuple(round(c + (255 - c) * k) for c in rgb)
+
+
+def luminancia(cor) -> float:
+    """Luminância relativa (WCAG 2.x)."""
+    if isinstance(cor, str):
+        cor = tuple(int(cor.lstrip("#")[i:i + 2], 16) for i in (0, 2, 4))
+    lin = [(c / 255 / 12.92) if c / 255 <= 0.03928 else ((c / 255 + 0.055) / 1.055) ** 2.4 for c in cor]
+    return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2]
 
 
 # ---------------------------------------------------------------------- animação

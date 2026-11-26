@@ -103,9 +103,9 @@ def construir(tema: str) -> str:
     furos = "".join(f'<circle cx="{x}" cy="{y}" r="7.5" fill="#000"/>' for x, y in nos)
     doc.defs.append(f'<mask id="pads" maskUnits="userSpaceOnUse" x="0" y="0" width="{L}" height="{A}">'
                     f'<rect width="{L}" height="{A}" fill="#fff"/>{furos}<circle cx="20" cy="{Y1}" r="4" fill="#000"/></mask>')
-    doc.corpo.append(f'<g mask="url(#pads)"><path d="{d}" stroke="{c["traco"]}" stroke-opacity=".26" stroke-width="1.5"/>'
+    doc.corpo.append(f'<g mask="url(#pads)"><path d="{d}" stroke="{c["traco"]}" stroke-opacity="{doc.op(.26)}" stroke-width="1.5"/>'
                      f'<path class="acesa" pathLength="1" d="{d}" stroke="{c["ambar"]}" stroke-width="1.5"/></g>'
-                     f'<path d="{circulo(20, Y1, 4)}" stroke="{c["traco"]}" stroke-opacity=".5" stroke-width="1.2"/>')
+                     f'<path d="{circulo(20, Y1, 4)}" stroke="{c["traco"]}" stroke-opacity="{doc.op(.5)}" stroke-width="1.2"/>')
 
     css.append("@keyframes desenha{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}"
                ".ic{stroke-dasharray:1;animation:desenha .9s cubic-bezier(.5,0,.25,1) both}"
@@ -116,7 +116,7 @@ def construir(tema: str) -> str:
     partes = []
     for i, ((x, y), t, (ano, titulo, sub, icone)) in enumerate(zip(nos, chegadas, MARCOS)):
         ultimo = i == len(nos) - 1
-        partes.append(f'<path d="{circulo(x, y, 5.5)}" stroke="{c["traco"]}" stroke-opacity=".6" stroke-width="1.2"/>')
+        partes.append(f'<path d="{circulo(x, y, 5.5)}" stroke="{c["traco"]}" stroke-opacity="{doc.op(.6)}" stroke-width="1.2"/>')
         # o último núcleo tem duas animações (liga + bate) com atrasos próprios na classe .agora
         estilo = "" if ultimo else f' style="animation-delay:{t:.2f}s"'
         partes.append(f'<circle class="{"agora" if ultimo else "nucleo"}"{estilo} '

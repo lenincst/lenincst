@@ -61,9 +61,9 @@ def construir(tema: str) -> str:
             doc.t("incremento binário", 24, 78, 14, "suave"),
             f'<path d="M{x0} {y0}h{CELULAS * cw}M{x0} {y0 + cw}h{CELULAS * cw}'
             + "".join(f"M{x0 + i * cw} {y0}v{cw}" for i in range(CELULAS + 1))
-            + f'" stroke="{c["traco"]}" stroke-opacity=".45" stroke-width="1"/>'
+            + f'" stroke="{c["traco"]}" stroke-opacity="{doc.op(.45)}" stroke-width="1"/>'
             f'<path d="M{x0 - 26} {y0}h22M{x0 - 26} {y0 + cw}h22M{x0 + CELULAS * cw + 4} {y0}h22'
-            f'M{x0 + CELULAS * cw + 4} {y0 + cw}h22" stroke="{c["traco"]}" stroke-opacity=".3" stroke-dasharray="3 4"/>',
+            f'M{x0 + CELULAS * cw + 4} {y0 + cw}h22" stroke="{c["traco"]}" stroke-opacity="{doc.op(.3)}" stroke-dasharray="3 4"/>',
             doc.t("estado", 640, 60, 14, "suave")]
 
     def quadro_estatico() -> str:
@@ -77,7 +77,7 @@ def construir(tema: str) -> str:
 
     def cabeca_svg(x: float, anima: str = "", luz: str = "") -> str:
         return (f'<g transform="translate({fmt(x)} 0)">{anima}'
-                f'<rect x="-20" y="{y0 + 2}" width="40" height="{cw - 4}" rx="2" fill="{c["ambar"]}" fill-opacity=".12">{luz}</rect>'
+                f'<rect x="-20" y="{y0 + 2}" width="40" height="{cw - 4}" rx="2" fill="{c["ambar"]}" fill-opacity="{c["luz"][0]}">{luz}</rect>'
                 f'<path d="M-10 14H10V30L0 40L-10 30Z" stroke="{c["ambar"]}" stroke-width="1.4" stroke-linejoin="round"/>'
                 f'<circle cy="22" r="2" fill="{c["ambar"]}"/></g>')
 
@@ -116,9 +116,9 @@ def construir(tema: str) -> str:
     mov = (f'<animateTransform attributeName="transform" type="translate" calcMode="spline" dur="{fmt(D, 3)}s" '
            f'repeatCount="indefinite" values="{";".join(f"{fmt(x)} 0" for _, x in nos)}" '
            f'keyTimes="{";".join(fmt(t / D, 4) for t, _ in nos)}" keySplines="{";".join(splines)}"/>')
-    luz_ev = [(0.0, ".12")]
+    luz_ev = [(0.0, c["luz"][0])]
     for k in range(len(passos)):
-        luz_ev += [(T[k], ".32"), (T[k] + 0.35, ".12")]
+        luz_ev += [(T[k], c["luz"][1]), (T[k] + 0.35, c["luz"][0])]
     luz = discreto("fill-opacity", luz_ev, D)
     anim.append(cabeca_svg(cx(INICIO), mov, luz))
 

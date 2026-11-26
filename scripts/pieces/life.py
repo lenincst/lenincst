@@ -61,7 +61,7 @@ def construir(tema: str) -> str:
         ev = []
         for g, vivas in enumerate(geracoes):
             anterior = geracoes[g - 1]  # g=0 olha a última geração (ciclo)
-            v = "1" if (x, y) in vivas else (".22" if (x, y) in anterior else "0")
+            v = "1" if (x, y) in vivas else (c["rastro"] if (x, y) in anterior else "0")
             ev.append((g * GERACAO, v))
         celulas.append(f'<rect x="{fmt(X0 + x * CEL + 1)}" y="{fmt(Y0 + y * CEL + 1)}" width="10.5" height="10.5" '
                        f'rx="1.5" fill="{cor}" opacity="{ev[0][1]}">{discreto("opacity", ev, D)}</rect>')

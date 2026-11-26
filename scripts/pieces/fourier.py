@@ -148,7 +148,7 @@ def construir(tema: str) -> str:
                + f".lambda{{stroke-dasharray:1;animation:traca {PERIODO}s linear .6s both}}")
 
     # epiciclos aninhados
-    css.append("@keyframes recua{to{opacity:.42}}"
+    css.append(f"@keyframes recua{{to{{opacity:{doc.op(.42)}}}}}"
                f".epi{{animation:recua 1.6s ease-in-out {PERIODO + 0.6:.1f}s both}}")
     abre, fecha = [], []
     ang_pai, k_pai = 0.0, 0
@@ -156,11 +156,11 @@ def construir(tema: str) -> str:
         r = abs(cf)
         ang = math.degrees(cmath.phase(cf))
         rel, dk = ang - ang_pai, k - k_pai
-        circulo = (f'<circle r="{fmt(r, 2)}" stroke="{c["traco"]}" stroke-opacity=".2" stroke-width=".8"/>'
+        circulo = (f'<circle r="{fmt(r, 2)}" stroke="{c["traco"]}" stroke-opacity="{doc.op(.2)}" stroke-width=".8"/>'
                    if r >= 1.2 else "")
         abre.append(f'<g><animateTransform attributeName="transform" type="rotate" from="{fmt(rel, 3)}" '
                     f'to="{fmt(rel + 360 * dk, 3)}" dur="{PERIODO}s" begin=".6s" repeatCount="indefinite"/>'
-                    f'{circulo}<path d="M0 0H{fmt(r, 2)}" stroke="{c["traco"]}" stroke-opacity=".5" stroke-width=".9"/>'
+                    f'{circulo}<path d="M0 0H{fmt(r, 2)}" stroke="{c["traco"]}" stroke-opacity="{doc.op(.5)}" stroke-width=".9"/>'
                     f'<g transform="translate({fmt(r, 2)} 0)">')
         fecha.append("</g></g>")
         ang_pai, k_pai = ang, k

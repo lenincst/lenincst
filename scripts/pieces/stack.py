@@ -35,10 +35,10 @@ CURVA_BARRA = (0.22, 0.8, 0.24, 1.0)
 DUR_BARRA = 1.1
 
 
-def icone(nome: str, x: float, y: float, tam: float) -> str:
+def icone(doc: Doc, nome: str, x: float, y: float, tam: float) -> str:
     ic = ICONES[nome]
     return (f'<path transform="translate({fmt(x)} {fmt(y)}) scale({fmt(tam / 24, 4)})" '
-            f'fill="{ic["cor"]}" d="{ic["d"]}"/>')
+            f'fill="{doc.cor_marca(ic["cor"])}" d="{ic["d"]}"/>')
 
 
 def odometro(doc: Doc, valor: int, x_fim: float, y: float, inicio: float, idx: int) -> str:
@@ -89,23 +89,23 @@ def construir(tema: str) -> str:
 
     # ---------------- coluna 1: compilador
     partes = [doc.t("Linguagens que mais uso", 24, 32, 17, "tinta", peso="m", cls="cab"),
-              f'<path class="cab" d="M24 46H512" stroke="{c["traco"]}" stroke-opacity=".18"/>',
+              f'<path class="cab" d="M24 46H512" stroke="{c["traco"]}" stroke-opacity="{doc.op(.18)}"/>',
               doc.t("Também na carreira", 556, 32, 17, "tinta", peso="m", cls="cab",
                     estilo="animation-delay:.2s"),
-              f'<path class="cab" style="animation-delay:.2s" d="M556 46H884" stroke="{c["traco"]}" stroke-opacity=".18"/>']
+              f'<path class="cab" style="animation-delay:.2s" d="M556 46H884" stroke="{c["traco"]}" stroke-opacity="{doc.op(.18)}"/>']
     for i, (rot, _, ic, pct) in enumerate(LINGUAGENS):
         y = 84 + i * 40
         t0 = 0.4 + i * 0.45
         t_barra = t0 + 0.25
         nome_x = 58 + len("compiling ") * 9.6
         fim_nome = nome_x + len(rot) * 9.6
-        linha = [icone(ic, 24, y - 17, 22),
+        linha = [icone(doc, ic, 24, y - 17, 22),
                  doc.t("compiling", 58, y, 16, "suave"),
                  doc.t(rot, nome_x, y, 16, "tinta"),
                  f'<path d="M{fmt(fim_nome + 8)} {y - 4}H298" stroke="{c["fraco"]}" stroke-width="1.6" '
                  f'stroke-linecap="round" stroke-dasharray="0 6.4"/>']
         partes.append(f'<g class="linha" style="animation-delay:{t0:.2f}s">{"".join(linha)}</g>')
-        partes.append(f'<rect x="306" y="{y - 9}" width="120" height="6" rx="3" fill="{c["traco"]}" fill-opacity=".1"/>'
+        partes.append(f'<rect x="306" y="{y - 9}" width="120" height="6" rx="3" fill="{c["traco"]}" fill-opacity="{c["trilho"]}"/>'
                       f'<rect class="barra" style="animation-delay:{t_barra:.2f}s" x="306" y="{y - 9}" '
                       f'width="{fmt(120 * pct / 100)}" height="6" rx="3" fill="{c["ambar"]}"/>')
         partes.append(odometro(doc, pct, 478, y, t_barra, i))
@@ -130,16 +130,17 @@ def construir(tema: str) -> str:
         caminhos.append(d)
         atraso = t_no[a] + 0.3
         partes.append(f'<path id="ar{k}" class="aresta" pathLength="1" style="animation-delay:{atraso:.2f}s" d="{d}" '
-                      f'stroke="{c["traco"]}" stroke-opacity=".45" stroke-width="1.2"/>'
+                      f'stroke="{c["traco"]}" stroke-opacity="{doc.op(.45)}" stroke-width="1.2"/>'
                       f'<path class="ok" style="animation-delay:{atraso + 0.5:.2f}s" d="M{x1 - 5} {yb - 3.5}L{x1} {yb}'
-                      f'L{x1 - 5} {yb + 3.5}" stroke="{c["traco"]}" stroke-opacity=".6" stroke-width="1.2" '
+                      f'L{x1 - 5} {yb + 3.5}" stroke="{c["traco"]}" stroke-opacity="{doc.op(.6)}" stroke-width="1.2" '
                       f'stroke-linecap="round" stroke-linejoin="round"/>')
     for nome, (ic, x, y) in NOS.items():
-        miolo = (icone(ic, x - 11, y - 11, 22) if ic else
+        miolo = (icone(doc, ic, x - 11, y - 11, 22) if ic else
                  doc.t("AWS", x, y + 5.5, 15, COR_AWS, peso="m", ancora="middle"))
         partes.append(f'<g class="no" style="animation-delay:{t_no[nome]:.2f}s">'
-                      f'<rect x="{x - 20}" y="{y - 20}" width="40" height="40" rx="9" stroke="{c["traco"]}" '
-                      f'stroke-opacity=".38" stroke-width="1.1"/>{miolo}'
+                      f'<rect x="{x - 20}" y="{y - 20}" width="40" height="40" rx="9" fill="{c["traco"]}" '
+                      f'fill-opacity="{c["painel"]}" stroke="{c["traco"]}" '
+                      f'stroke-opacity="{doc.op(.38)}" stroke-width="1.1"/>{miolo}'
                       f'{doc.t(nome, x, y + 40, 14, "suave", ancora="middle")}</g>')
 
     # repouso: um sinal discreto percorre as dependências, uma aresta por vez

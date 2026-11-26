@@ -1,21 +1,23 @@
 {
- "_comentario": "Paleta dos SVGs. dark: fósforo âmbar de CRT sobre o fundo do GitHub; light: tinta grafite sobre papel. As chaves são usadas pelas peças em scripts/pieces.",
+ "_comentario": "Paleta dos SVGs. dark: âmbar de fósforo sobre o fundo do GitHub, com traços realçados (realce < 1 aproxima opacidades de 1); light: tinta grafite sobre papel.",
  "dark": {
   "fundo": "#0d1117",
-  "tinta": "#e6edf3",
-  "suave": "#9198a1",
-  "fraco": "#6e7681",
-  "traco": "#e6edf3",
+  "tinta": "#f0f6fc",
+  "suave": "#b4bdc7",
+  "fraco": "#8d96a0",
+  "traco": "#d0d7de",
   "grade": "#e6edf3",
-  "grade_op": "0.055",
+  "grade_op": "0.09",
   "ambar": "#ffb000",
   "ciano": "#86cad6",
-  "tela": "#0a0d11",
-  "linha_varredura": "#000000",
-  "varredura_op": "0.32",
-  "brilho_op": "0.085",
-  "cartao": "#11161d",
-  "furo": "#ffb000"
+  "realce": "0.6",
+  "rastro": ".4",
+  "luz": [
+   ".2",
+   ".45"
+  ],
+  "trilho": ".22",
+  "painel": ".07"
  },
  "light": {
   "fundo": "#ffffff",
@@ -27,11 +29,13 @@
   "grade_op": "0.06",
   "ambar": "#9a5f00",
   "ciano": "#1b6f80",
-  "tela": "#f6f5f0",
-  "linha_varredura": "#1f2328",
-  "varredura_op": "0.035",
-  "brilho_op": "0.05",
-  "cartao": "#fbfaf6",
-  "furo": "#1f2328"
+  "realce": "1",
+  "rastro": ".22",
+  "luz": [
+   ".12",
+   ".32"
+  ],
+  "trilho": ".1",
+  "painel": "0"
  }
 }
