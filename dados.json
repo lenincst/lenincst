@@ -1,0 +1,63 @@
+{
+ "gerado_em": "2026-11-28T05:43-03:00",
+ "conta_desde": "2022-12-02",
+ "repos_total": 20,
+ "repos_privados": 18,
+ "commits": 2108,
+ "primeiro_commit": "2025-12-01",
+ "contribuicoes_ano": 2576,
+ "sequencias": {
+  "maior": 18,
+  "atual": 0
+ },
+ "linguagens": {
+  "PHP": 12270991,
+  "HTML": 12121140,
+  "Python": 3879431,
+  "Blade": 1945835,
+  "JavaScript": 1185967,
+  "TypeScript": 812614,
+  "Shell": 805293,
+  "CSS": 180690,
+  "PLpgSQL": 97181,
+  "Makefile": 18462,
+  "PowerShell": 10818,
+  "Jupyter Notebook": 8994,
+  "Dockerfile": 5623
+ },
+ "horas": [
+  163,
+  105,
+  105,
+  67,
+  58,
+  30,
+  40,
+  71,
+  71,
+  75,
+  53,
+  68,
+  51,
+  81,
+  72,
+  84,
+  73,
+  69,
+  56,
+  95,
+  154,
+  156,
+  156,
+  155
+ ],
+ "dias_semana": [
+  340,
+  225,
+  177,
+  341,
+  369,
+  342,
+  314
+ ]
+}
